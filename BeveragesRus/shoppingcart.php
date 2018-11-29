@@ -15,13 +15,13 @@ function removeFromCart(totalAmount, itemID){
 
 	var AMOUNT = prompt('How many would you like to remove?');
 	
-	alert(AMOUNT);
-	alert(totalAmount);
-	alert(itemID);
+	alert("User wants to remove" + AMOUNT);
+	alert("In the shopping cart there are " + totalAmount);
+	alert("Product ID is" + itemID);
 	
 	//prevents people from subtracting more than what they have
 	if ((AMOUNT-totalAmount)>0){
-		alert("Sorry, we don't have enough in stock for that amount.");
+		alert("You entered an amount that is greater than what you have in your cart.");
 		
 	}
 	else{
@@ -48,7 +48,6 @@ function removeFromCart(totalAmount, itemID){
 	}
 	//If user enters a number less than 0 or letters
 	else{
-		alert("Sorry, that is not a correct amount");
 	}
 	}
 	

@@ -133,7 +133,6 @@ for(var i=0; i<elements.length;i++) //for loop
 	}
 	//If user enters a number less than 0 or letters
 	else{
-		alert("Sorry, that is not a correct amount");
 	}
 	}
 	

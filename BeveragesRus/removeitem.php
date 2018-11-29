@@ -15,7 +15,7 @@ session_start();
 	//total amount
 	$itemamount = $_REQUEST['item'];
 	
-	//final amount of product
+	//final amount of product to be updated in the shopping cart
 	$finalAmount = $itemamount - $AMOUNT;
 	$n = rand(0, 999999);
 try {
@@ -26,10 +26,10 @@ try {
 	if($finalAmount>0){
 	
 		//update shopping cart
-	$stmt = $conn->prepare("update shoppingcart SET amount=:AMOUNT WHERE userID = :userID AND itemID =:itemID");
+	$stmt = $conn->prepare("update shoppingcart SET amount=:finalAmount WHERE userID = :userID AND itemID =:itemID");
 	$stmt->bindParam(':userID', $userID);
 	$stmt->bindParam(':itemID', $itemID);
-    $stmt->bindParam(':itemamount', $itemamount);
+    $stmt->bindParam(':finalAmount', $finalAmount);
 	$stmt->execute();
 	$stmt = null;
 	
@@ -50,7 +50,9 @@ try {
 	$stmt->bindParam(':itemID', $itemID);
 	$stmt->execute();
 	$stmt = null;
+	//update main listing
 	
+	//FIX
 	$stmt2 = $conn->prepare("UPDATE items SET amount = amount + :AMOUNT WHERE items.itemID = :itemID");
 	$stmt2->bindParam(':$AMOUNT',$AMOUNT);
 	$stmt2->bindParam(':itemID', $itemID);
