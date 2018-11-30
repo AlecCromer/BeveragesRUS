@@ -26,7 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `customer`
 --
 
-CREATE TABLE IF NOT EXISTS `customer` (
+CREATE DATABASE  IF NOT EXISTS webstore;
+
+use webstore;
+
+CREATE TABLE  IF NOT EXISTS `customer` (
   `customerID` int(8) NOT NULL,
   `customerEmail` varchar(50) NOT NULL,
   `customerPassword` varchar(100) NOT NULL,
