@@ -73,7 +73,7 @@ if( ! $row)
 
     while($row = $result->fetch_assoc()) {
 		echo("<tr id=\"".$row["itemId"]."\">");
-        echo " <td>" . $row["itemName"]. "</td><td> " . $row["itemPrice"]. "</td> <td>" . $row["itemDescription"]. "</td><td id='".$row["itemId"]."amount'>".$row['amount']."</td>";
+        echo " <td>" . $row["itemName"]. "</td><td>$" . $row["itemPrice"]. "</td> <td>" . $row["itemDescription"]. "</td><td id='".$row["itemId"]."amount'>".$row['amount']."</td>";
 		echo("</tr>");
 	}
 	echo("</table>");

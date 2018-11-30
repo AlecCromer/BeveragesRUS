@@ -54,7 +54,7 @@ try {
 	
 	//FIX
 	$stmt2 = $conn->prepare("UPDATE items SET amount = amount + :AMOUNT WHERE items.itemID = :itemID");
-	$stmt2->bindParam(':$AMOUNT',$AMOUNT);
+	$stmt2->bindParam(':AMOUNT',$AMOUNT);
 	$stmt2->bindParam(':itemID', $itemID);
 	$stmt2->execute();
 	$stmt2 = null;
