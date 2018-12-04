@@ -141,17 +141,17 @@ for(var i=0; i<elements.length;i++) //for loop
 	if($_SESSION['admin'] == "a"){
 		echo("
 		<form action=\"entry.php\" method=\"POST\">
-			<input  name=\"itemID\" type=\"text\" placeholder=\"Enter item ID\"><br>
-			<input  name=\"Name\" type=\"text\" placeholder=\"Enter Name\"><br>
-			<input  name=\"Description\" type=\"text\" placeholder=\"Enter Description\"><br>
-			<input  name=\"itemPrice\" type=\"text\" placeholder=\"Enter item price\"><br>
-			<input  name=\"amount\" type=\"text\" placeholder=\"Enter amount in stock\"><br>
+			<input  name=\"itemID\" type=\"number\" placeholder=\"Enter item ID\" required><br>
+			<input  name=\"Name\" type=\"text\" placeholder=\"Enter Name\" required><br>
+			<input  name=\"Description\" type=\"text\" placeholder=\"Enter Description\" required><br>
+			<input  name=\"itemPrice\" type=\"number\" placeholder=\"Enter item price\" required><br>
+			<input  name=\"amount\" type=\"number\" placeholder=\"Enter amount in stock\" required><br>
 			<button type=\"sumbit\">Submit</button>
 		</form>");
 		echo("
 		<form action=\"entry.php\" method=\"POST\">
-			<input  name=\"itemID\" type=\"text\" placeholder=\"Enter item ID\"><br>
-			<input  name=\"amount\" type=\"text\" placeholder=\"Enter amount in stock\"><br>
+			<input  name=\"itemID\" type=\"text\" placeholder=\"Enter item ID\" required><br>
+			<input  name=\"amount\" type=\"text\" placeholder=\"Enter amount in stock\" required><br>
 			<button type=\"sumbit\">Submit</button>
 		</form>");	
 	}

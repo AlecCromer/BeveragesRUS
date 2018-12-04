@@ -17,6 +17,7 @@
 </div>
 <div class="row">
 <div class="mainlist col-6">
+<p>Our Company is a homegrown drink manufacturer founded by Alec Cromer, Matthew Williams, and Carter Lawrence. Our history? Man do we have history. We so much history it’s ridiculous. We were around for prohibition, we were around for the great depression, and we were around for the Spanish inquisition. Family ties? Man do we have family ties. My grandmother hand juices all of the fruit we use in our drinks; sometimes we even feed her. DRINKS?! OH BOY do we sell drinks. Wait, do we sell drinks</p>
 <p>Here is our list of beverages that we offer.</p>
 <?php
 $servername = "localhost";

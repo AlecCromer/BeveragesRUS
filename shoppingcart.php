@@ -14,11 +14,6 @@ function removeFromCart(totalAmount, itemID){
 	
 
 	var AMOUNT = prompt('How many would you like to remove?');
-	
-	alert("User wants to remove" + AMOUNT);
-	alert("In the shopping cart there are " + totalAmount);
-	alert("Product ID is" + itemID);
-	
 	//prevents people from subtracting more than what they have
 	if ((AMOUNT-totalAmount)>0){
 		alert("You entered an amount that is greater than what you have in your cart.");
@@ -39,7 +34,7 @@ function removeFromCart(totalAmount, itemID){
         data: {itemID:itemID, amount:AMOUNT, item:totalAmount},
         success: function(data)
         {
-            window.alert(data);
+            //window.alert(data);
 			document.location.reload();
         }
     });
@@ -51,6 +46,28 @@ function removeFromCart(totalAmount, itemID){
 	}
 	}
 	
+}
+
+function order(){
+	
+	var address = prompt('What is your address?');
+	var ccNum = prompt('What is your credit card number?');
+	$(document).ready(function () { //jQuery
+	
+	$.ajax(
+    {
+        url: 'finalOrder.php',
+        type:'POST',
+        dataType: 'text',
+        data: {itemID:itemID, amount:AMOUNT, item:totalAmount},
+        success: function(data)
+        {
+            window.alert(data);
+			document.location.reload();
+        }
+    });
+
+		});//jQuery
 }
 </script>
 <body>
@@ -84,24 +101,102 @@ $totalPrice = 0;
 
     while($row = $result->fetch_assoc()) {
 		echo("<tr>");
-		$totalPrice +=  $row["amount"];
+		$totalPrice +=  $row["amount"]*$row["itemPrice"];
         echo " <td>" . $row["itemName"]. "</td><td id='".$row["itemName"].$row["amount"]."'> " . $row["amount"]. "</td> <td>" . $row["itemPrice"]. "</td><td><button onclick=\"removeFromCart('".$row["amount"]."','".$row["itemId"]."')\" id='".$row["itemName"]."'>Remove from cart</button></td>";
 		echo("</tr>");
 	}
 	echo("</table>");
 } else {
-    echo "0 results";
+    echo "<p>Your shopping cart is empty</p>";
 }
 $conn->close();
 }catch(PDOException $e){
     echo "Connection failed: " . $e->getMessage();
     }
 
-echo("Your total price is $".$totalPrice);
+echo("<p>Your total price is $".$totalPrice."</p>");
 
 
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<div id="paypal-button-container"></div>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+// Render the PayPal button
+paypal.Button.render({
+// Set your environment
+env: 'sandbox', // sandbox | production
 
+// Specify the style of the button
+locale: 'en_US',
+style: {
+ size: 'medium',
+ color: 'gold',
+ shape: 'pill',
+ label: 'checkout',
+ tagline: 'true'
+},
+
+// Specify allowed and disallowed funding sources
+//
+// Options:
+// - paypal.FUNDING.CARD
+// - paypal.FUNDING.CREDIT
+// - paypal.FUNDING.ELV
+funding: {
+  allowed: [
+    paypal.FUNDING.CARD
+  ],
+  disallowed: []
+},
+
+// Enable Pay Now checkout flow (optional)
+commit: true,
+
+// PayPal Client IDs - replace with your own
+// Create a PayPal app: https://developer.paypal.com/developer/applications/create
+client: {
+  sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+  production: '<insert production client id>'
+},
+
+payment: function (data, actions) {
+  return actions.payment.create({
+    payment: {
+      transactions: [
+        {
+          amount: {
+            total: '<?php echo("$totalPrice");?>',
+            currency: 'USD'
+          }
+        }
+      ]
+    }
+  });
+},
+
+onAuthorize: function (data, actions) {
+  return actions.payment.execute()
+    .then(function () {
+      window.alert('Payment Complete!');
+	  	$(document).ready(function () { //jQuery
+	
+	$.ajax(
+    {
+        url: 'orderProcess.php',
+        type:'POST',
+        dataType: 'text',
+        success: function(data)
+        {
+            window.alert(data);
+			document.location.reload();
+        }
+    });
+
+		});//jQuery
+    });
+}
+}, '#paypal-button-container');
+</script>
 </body>
 </html>
