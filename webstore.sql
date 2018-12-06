@@ -41,7 +41,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerID`, `customerEmail`, `customerPassword`, `customerName`, `admin`) VALUES
-(681875, 'a@a.com', 'a', 'Pablo', 'a'),
+(681875, 'admin@gmail.com', 'admin', 'Pablo', 'a'),
 (736010, 'johnwick@gmail.com', 'password', 'John', 'na');
 
 -- --------------------------------------------------------
