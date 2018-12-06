@@ -45,8 +45,8 @@ try {
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 if( ! $row)
 {
-	echo("<SCRIPT>alert('Sorry that user does not exist')</SCRIPT>");
-	echo("<p><a href='index.php'>Return to main menu</a></p>");
+	echo("<SCRIPT>alert('Sorry that user does not exist');window.location.href = 'index.php';</SCRIPT>");
+
 	die();
 }
 	if($stmt->execute()){
