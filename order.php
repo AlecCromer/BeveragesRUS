@@ -6,6 +6,7 @@
 <title>Beverages R Us.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<link href="css/bootstrap.css" rel="stylesheet">
 <!--external CSS and Scrolling JS-->
 <link rel="stylesheet" href="css/style.css">
 
@@ -135,7 +136,7 @@ for(var i=0; i<elements.length;i++) //for loop
 }); //eventlistener
 } //forloop
 </script>
-<p> <a href="shoppingcart.php">Check your shopping cart here</a></p>
+<button class="button"><a href="shoppingcart.php">Check your shopping cart here</a></button>
 
 <?php
 	if($_SESSION['admin'] == "a"){

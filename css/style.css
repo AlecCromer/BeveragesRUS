@@ -1,8 +1,18 @@
-table,tr,td,th{
-	border: 1px solid black;
+table,td,th {
+	border-width: 100px;
+	border: 3px solid black;
 }
-
-
+tr:hover{
+	background-color: #80c3ff;
+}
+.padding{
+	margin-top: 3px;
+}
+.move{
+	position: relative;
+	left: 25%;
+	top: 25%;
+}
 .form-signin{
 	max-width:300px;
 	margin:auto;
