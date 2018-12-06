@@ -87,6 +87,12 @@ CREATE TABLE `shoppingcart` (
   `amount` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `orderprocess` (
+  `orderId` int(6) NOT NULL,
+  `userId` int(6) NOT NULL,
+  `itemId` int(6) NOT NULL,
+  `amount` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `shoppingcart`
 --
